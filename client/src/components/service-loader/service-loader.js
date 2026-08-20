@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Loader2, CheckCircle2, ExternalLink } from "lucide-react";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL;
+const API_URL = "https://api-gateway-canva-clone.onrender.com";
 
 const SERVICE_URLS = {
   GATEWAY: API_URL,
