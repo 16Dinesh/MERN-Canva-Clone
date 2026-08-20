@@ -20,10 +20,11 @@ function Banner() {
       toast.error("Please upgrade to premium!", {
         description: "You need to upgrade to premium to create more designs",
       });
-
       return;
     }
+
     if (loading) return;
+
     try {
       setLoading(true);
 
@@ -35,18 +36,21 @@ function Banner() {
         category: "youtube_thumbnail",
       };
 
+      console.log("Creating design...");
+
       const newDesign = await saveDesign(initialDesignData);
 
-      if (newDesign?.success) {
-        router.push(`/editor/${newDesign?.data?._id}`);
-        setLoading(false);
-      } else {
+      console.log("Create design response:", newDesign);
+
+      if (!newDesign?.success) {
         throw new Error("Failed to create new design");
       }
 
-      console.log(newDesign, "newDesign");
-    } catch (e) {
-      console.log(e);
+      router.push(`/editor/${newDesign.data._id}`);
+    } catch (error) {
+      console.error("Create design failed:", error);
+      toast.error("Failed to create design");
+    } finally {
       setLoading(false);
     }
   };

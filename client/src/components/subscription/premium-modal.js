@@ -155,7 +155,7 @@ function SubscriptionModal({ isOpen, onClose }) {
           </div>
           <div className="hidden md:block md:w-[450px]">
             <img
-              src="https://blogimage.vantagecircle.com/content/images/2023/01/10-Smart-Ways-to-Better-Team-Collaboration-1.png"
+              src="https://media-hosting.imagekit.io/646b543ce33543f9/78697aa1-1660-42f3-9399-2b85512e9582.webp?Expires=1838412179&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=huLeTKW-cVpZp3udrMna5UfAj1yFd2FrHVHQDxAWxyMZ6Yw2OX~0Xo2VFO0dRxWAfJat2o0FpDQj63pN5Qn1VnmHAP3YYtMcYcDkpXkfVSAf2Nk8djoXKQuQxRWw99N6kKIZ8-I8P9iU~34Z4qWVd19uIhTKaAqmzwwxq4if-SXd10vK9vrgXvee27A1voxnfrHoWG72a6IFfuWIQy7FZX-QHImn-37gb2bGLsNNozxbihJNGI7WLdojWKJvOv5oX2vJr5Ig~F7z1DQydJVCm3yVTnez~5bSOJlb9Y11jb0VoTZsZJi9D3RdL-n-qksuvzFEhm4roFJlgealdiEbRQ__"
               alt="Team Collaboration"
               className="w-full h-full object-cover"
             />

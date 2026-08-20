@@ -1,7 +1,7 @@
 import axios from "axios";
 import { getSession } from "next-auth/react";
 
-const API_URL = process.env.API_URL;
+const API_URL = "https://api-gateway-canva-clone.onrender.com";
 
 export async function fetchWithAuth(endpoint, options = {}) {
   const session = await getSession();
@@ -24,6 +24,13 @@ export async function fetchWithAuth(endpoint, options = {}) {
 
     return response.data;
   } catch (error) {
-    throw new Error("Api request failed");
+    console.error("API request failed:", {
+      url: `${API_URL}${endpoint}`,
+      status: error.response?.status,
+      data: error.response?.data,
+      headers: error.response?.headers,
+    });
+
+    throw error;
   }
 }

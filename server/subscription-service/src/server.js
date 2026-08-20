@@ -20,15 +20,26 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/subscription", subscriptionRoutes);
 
+app.get("/health", (req, res) => {
+  res.status(200).send("working");
+});
+
+
+
 async function startServer() {
   try {
+    app.get("/health", (req, res) => {
+      res.status(200).send("working");
+    });
+
     app.listen(PORT, () =>
-      console.log(`SUBSCRIPTION Service running on port ${PORT}`)
+      console.log(`subscription Service running on port ${PORT}`)
     );
   } catch (error) {
     console.error("Failed to connected to server", error);
     process.exit(1);
   }
 }
+
 
 startServer();
