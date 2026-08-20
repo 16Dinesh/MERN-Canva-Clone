@@ -4,15 +4,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Loader2, CheckCircle2, ExternalLink } from "lucide-react";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL;
-
-const SERVICE_URLS = {
-  GATEWAY: API_URL,
-  DESIGN: "https://design-service-mern-canva-clone.onrender.com",
-  UPLOAD: "https://upload-service-mern-canva-clone.onrender.com",
-  SUBSCRIPTION:
-    "https://subscription-service-mern-canva-clone.onrender.com",
-};
+const API_URL = process.env.API_URL;
 
 function ServiceLoader({ children }) {
   const [loading, setLoading] = useState(true);
