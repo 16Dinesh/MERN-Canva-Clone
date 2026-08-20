@@ -4,7 +4,15 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Loader2, CheckCircle2, ExternalLink } from "lucide-react";
 
-const API_URL = process.env.API_URL;
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
+const SERVICE_URLS = {
+  GATEWAY: API_URL,
+  DESIGN: "https://design-service-mern-canva-clone.onrender.com",
+  UPLOAD: "https://upload-service-mern-canva-clone.onrender.com",
+  SUBSCRIPTION:
+    "https://subscription-service-mern-canva-clone.onrender.com",
+};
 
 function ServiceLoader({ children }) {
   const [loading, setLoading] = useState(true);
@@ -24,10 +32,6 @@ function ServiceLoader({ children }) {
     let timerInterval = null;
 
     const startTime = Date.now();
-
-    // =====================================================
-    // CHECK ONE SERVICE
-    // =====================================================
 
     const checkService = async (name, url) => {
       try {
@@ -60,10 +64,6 @@ function ServiceLoader({ children }) {
           body: text,
         });
 
-        // =====================================================
-        // RESPONSE NOT OK
-        // =====================================================
-
         if (!response.ok) {
           if (mounted) {
             setServices((prev) => ({
@@ -75,10 +75,6 @@ function ServiceLoader({ children }) {
           return false;
         }
 
-        // =====================================================
-        // API GATEWAY
-        // Gateway returns JSON
-        // =====================================================
 
         if (name === "GATEWAY") {
           try {
@@ -127,13 +123,6 @@ function ServiceLoader({ children }) {
           }
         }
 
-        // =====================================================
-        // INDIVIDUAL SERVICES
-        // Expected response:
-        //
-        // working
-        // =====================================================
-
         if (text.trim() === "working") {
           if (mounted) {
             setServices((prev) => ({
@@ -171,10 +160,6 @@ function ServiceLoader({ children }) {
         return false;
       }
     };
-
-    // =====================================================
-    // CHECK ALL SERVICES
-    // =====================================================
 
     const checkAllServices = async () => {
       console.log("");
@@ -265,9 +250,6 @@ function ServiceLoader({ children }) {
 
       console.log("========================================");
 
-      // =====================================================
-      // MINIMUM 20 SECONDS
-      // =====================================================
 
       if (
         mounted &&
@@ -290,24 +272,14 @@ function ServiceLoader({ children }) {
       }
     };
 
-    // =====================================================
-    // FIRST CHECK IMMEDIATELY
-    // =====================================================
 
     checkAllServices();
-
-    // =====================================================
-    // CHECK EVERY 10 SECONDS
-    // =====================================================
 
     healthInterval = setInterval(
       checkAllServices,
       10000
     );
 
-    // =====================================================
-    // TIMER
-    // =====================================================
 
     timerInterval = setInterval(() => {
       if (!mounted) return;
@@ -323,10 +295,6 @@ function ServiceLoader({ children }) {
       );
     }, 500);
 
-    // =====================================================
-    // CLEANUP
-    // =====================================================
-
     return () => {
       mounted = false;
 
@@ -340,9 +308,6 @@ function ServiceLoader({ children }) {
     };
   }, []);
 
-  // =======================================================
-  // LOADING SCREEN
-  // =======================================================
 
   if (loading) {
     return (
@@ -458,16 +423,10 @@ function ServiceLoader({ children }) {
     );
   }
 
-  // =======================================================
-  // APPLICATION
-  // =======================================================
 
   return children;
 }
 
-// ==========================================================
-// SERVICE STATUS COMPONENT
-// ==========================================================
 
 function ServiceStatus({
   name,
