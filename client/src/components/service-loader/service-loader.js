@@ -1,8 +1,10 @@
+"use client";
+
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Loader2, CheckCircle2 } from "lucide-react";
 
-const API_URL = process.env.API_URL;
+const API_URL ="https://api-gateway-canva-clone.onrender.com";
 
 function ServiceLoader({ children }) {
   const [loading, setLoading] = useState(true);
